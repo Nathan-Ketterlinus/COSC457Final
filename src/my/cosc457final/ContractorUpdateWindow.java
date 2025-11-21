@@ -121,7 +121,7 @@ public class ContractorUpdateWindow extends javax.swing.JFrame {
         //FORM SQL QUERY WITH DATA
         int contID = Integer.parseInt(fieldContID.getText());
         String job = fieldJob.getText();
-        String cost = fieldCost.getText();
+        int cost = Integer.parseInt(fieldCost.getText());
         String phone = fieldPhone.getText();
 
         // TODO: MAKE AND PUSH QUERY

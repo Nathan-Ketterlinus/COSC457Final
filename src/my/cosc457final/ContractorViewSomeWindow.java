@@ -145,7 +145,7 @@ public class ContractorViewSomeWindow extends javax.swing.JFrame {
         }
         
         if(fieldCost.getText() != null){
-            String cost = fieldCost.getText();
+            int cost = Integer.parseInt(fieldCost.getText());
         }
         
         if(fieldPhone.getText() != null){

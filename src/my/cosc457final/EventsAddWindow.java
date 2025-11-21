@@ -191,8 +191,8 @@ public class EventsAddWindow extends javax.swing.JFrame {
         String location = fieldELocation.getText();
         String theme = fieldETheme.getText();
         String colors = fieldEColors.getText();
-        String hours = fieldEHours.getText();
-        String isPaid = fieldEIsPaid.getText();
+        int hours = Integer.parseInt(fieldEHours.getText());
+        boolean isPaid = Boolean.parseBoolean(fieldEIsPaid.getText());
         int CID = Integer.parseInt(fieldCID.getText());
         
         // TODO: MAKE AND PUSH QUERY

@@ -113,7 +113,7 @@ public class ContractorAddWindow extends javax.swing.JFrame {
     private void buttonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSaveActionPerformed
         //FORM SQL QUERY WITH DATA
         String job = fieldJob.getText();
-        String cost = fieldCost.getText();
+        int cost = Integer.parseInt(fieldCost.getText());
         String phone = fieldPhone.getText();
         
         // TODO: MAKE AND PUSH QUERY

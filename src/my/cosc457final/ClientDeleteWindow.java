@@ -90,7 +90,7 @@ public class ClientDeleteWindow extends javax.swing.JFrame {
 
     private void buttonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeleteActionPerformed
         //FORM SQL QUERY WITH DATA
-        String CID = fieldCID.getText();
+        int CID = Integer.parseInt(fieldCID.getText());
 
         // TODO: MAKE AND PUSH QUERY
 

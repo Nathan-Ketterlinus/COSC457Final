@@ -487,9 +487,12 @@
                         <Component class="javax.swing.JList" name="favorFuncList">
                           <Properties>
                             <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                              <Connection code="new javax.swing.AbstractListModel&lt;String&gt;() {&#xa;    String[] strings = { &quot;Add&quot;, &quot;Update&quot;, &quot;Delete&quot;, &quot;View Favor&quot;, &quot;View All Favors&quot;, &quot;View Upcoming Favors&quot;};&#xa;    public int getSize() { return strings.length; }&#xa;    public String getElementAt(int i) { return strings[i]; }&#xa;}" type="code"/>
+                              <Connection code="new javax.swing.AbstractListModel&lt;String&gt;() {&#xa;    String[] strings = { &quot;Add&quot;, &quot;Update&quot;, &quot;Delete&quot;, &quot;View Some&quot;, &quot;View All&quot;, &quot;View Upcoming Favors&quot;};&#xa;    public int getSize() { return strings.length; }&#xa;    public String getElementAt(int i) { return strings[i]; }&#xa;}" type="code"/>
                             </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="valueChanged" listener="javax.swing.event.ListSelectionListener" parameters="javax.swing.event.ListSelectionEvent" handler="favorFuncListValueChanged"/>
+                          </Events>
                           <AuxValues>
                             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                           </AuxValues>

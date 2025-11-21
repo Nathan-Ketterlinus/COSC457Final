@@ -221,11 +221,11 @@ public class EventsViewSomeWindow extends javax.swing.JFrame {
         }
         
         if(fieldEHours.getText() != null){
-            String hours = fieldEHours.getText();
+            int hours = Integer.parseInt(fieldEHours.getText());
         }
         
         if(fieldEIsPaid.getText() != null){
-            String isPaid = fieldEIsPaid.getText(); //TODO: this should probably be a bool lol
+            boolean isPaid = Boolean.parseBoolean(fieldEIsPaid.getText());
         }
         
         if (Objects.nonNull(fieldCID.getText())){

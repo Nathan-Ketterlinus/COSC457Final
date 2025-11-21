@@ -90,7 +90,7 @@ public class ContractorDeleteWindow extends javax.swing.JFrame {
 
     private void buttonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeleteActionPerformed
         //FORM SQL QUERY WITH DATA
-        String contID = fieldContID.getText();
+        int contID = Integer.parseInt(fieldContID.getText());
 
         // TODO: MAKE AND PUSH QUERY
 
