@@ -225,9 +225,14 @@ public class FinalUI extends javax.swing.JFrame {
         jTabbedPane1.addTab("Contractors", contractorPanel);
 
         eventFuncList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Add", "Update", "Delete", "View Event", "View All Events", "View Past Events", "View Upcoming Events" };
+            String[] strings = { "Add", "Update", "Delete", "View Some", "View All", "View Past Events", "View Upcoming Events" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
+        });
+        eventFuncList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                eventFuncListValueChanged(evt);
+            }
         });
         funcListScrollContainer2.setViewportView(eventFuncList);
 
@@ -591,6 +596,51 @@ public class FinalUI extends javax.swing.JFrame {
                 break;
         }
     }//GEN-LAST:event_contractorFuncListValueChanged
+
+    private void eventFuncListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_eventFuncListValueChanged
+        // TODO add your handling code here:
+         // Prevent double events (Swing fires twice during selection change)
+        if (evt.getValueIsAdjusting()) {
+            return;
+        }
+
+        String choice = eventFuncList.getSelectedValue();
+        if (choice == null) return;
+
+        switch (choice) {
+            case "Add":
+                // Create window that allows user to specify query
+                new EventsAddWindow().setVisible(true);
+                break;
+
+            case "Update":
+                // Create window that allows user to specify query
+                new EventsUpdateWindow().setVisible(true);
+                break;
+
+            case "Delete":
+                // Create window that allows user to specify query
+                new EventsDeleteWindow().setVisible(true);
+                break;
+
+            case "View Some":
+                // Create window that allows user to specify query
+                new EventsViewSomeWindow().setVisible(true);
+                break;
+
+            case "View All":
+                //TODO: update table to show *
+                break;
+                
+            case "View Past Events":
+                //TODO: update table to show * where EDate < Today()
+                break;
+            
+            case "View Upcoming Events":
+                //TODO: update table to show * where EDate > Today()
+                break;
+        }
+    }//GEN-LAST:event_eventFuncListValueChanged
 
     /**
      * @param args the command line arguments
