@@ -65,7 +65,7 @@ public class FinalUI extends javax.swing.JFrame {
         inventorySplitPane = new javax.swing.JSplitPane();
         inventoryAuxDisplay = new javax.swing.JPanel();
         funcListScrollContainer4 = new javax.swing.JScrollPane();
-        InventoryFuncList = new javax.swing.JList<>();
+        inventoryFuncList = new javax.swing.JList<>();
         mainDisplay4 = new javax.swing.JPanel();
         tableScrollContainer4 = new javax.swing.JScrollPane();
         DisplayTable4 = new javax.swing.JTable();
@@ -368,12 +368,17 @@ public class FinalUI extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Favor", favorPanel);
 
-        InventoryFuncList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Add", "Update", "Delete", "View Item", "View All Items", "Sort by Remaining"};
+        inventoryFuncList.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Add", "Update", "Delete", "View Some", "View All", "Sort by Remaining"};
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        funcListScrollContainer4.setViewportView(InventoryFuncList);
+        inventoryFuncList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                inventoryFuncListValueChanged(evt);
+            }
+        });
+        funcListScrollContainer4.setViewportView(inventoryFuncList);
 
         javax.swing.GroupLayout inventoryAuxDisplayLayout = new javax.swing.GroupLayout(inventoryAuxDisplay);
         inventoryAuxDisplay.setLayout(inventoryAuxDisplayLayout);
@@ -677,14 +682,54 @@ public class FinalUI extends javax.swing.JFrame {
                 break;
 
             case "View All":
-                //TODO: update Event table to show *
+                //TODO: update Favor table to show *
                 break;
             
             case "View Upcoming Favors":
-                //TODO: update Event table to show * where FDate > Today()
+                //TODO: update Favor table to show * where FDate > Today()
                 break;
         }
     }//GEN-LAST:event_favorFuncListValueChanged
+
+    private void inventoryFuncListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_inventoryFuncListValueChanged
+                // Prevent double events (Swing fires twice during selection change)
+        if (evt.getValueIsAdjusting()) {
+            return;
+        }
+
+        String choice = inventoryFuncList.getSelectedValue();
+        if (choice == null) return;
+
+        switch (choice) {
+            case "Add":
+                // Create window that allows user to specify query
+                new InventoryAddWindow().setVisible(true);
+                break;
+
+            case "Update":
+                // Create window that allows user to specify query
+                new InventoryUpdateWindow().setVisible(true);
+                break;
+
+            case "Delete":
+                // Create window that allows user to specify query
+                new InventoryDeleteWindow().setVisible(true);
+                break;
+
+            case "View Some":
+                // Create window that allows user to specify query
+                new InventoryViewSomeWindow().setVisible(true);
+                break;
+
+            case "View All":
+                //TODO: update Inventory table to show *
+                break;
+            
+            case "Sort by Remaining":
+                //TODO: update Inventory table to show * where FDate > Today()
+                break;
+        }
+    }//GEN-LAST:event_inventoryFuncListValueChanged
 
     /**
      * @param args the command line arguments
@@ -719,7 +764,6 @@ public class FinalUI extends javax.swing.JFrame {
     private javax.swing.JTable DisplayTable4;
     private javax.swing.JTable DisplayTable5;
     private javax.swing.JPanel FavorAuxDisplay;
-    private javax.swing.JList<String> InventoryFuncList;
     private javax.swing.JList<String> WorkerfuncList;
     private javax.swing.JPanel clientAuxDisplay;
     private javax.swing.JList<String> clientFuncList;
@@ -743,6 +787,7 @@ public class FinalUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane funcListScrollContainer4;
     private javax.swing.JScrollPane funcListScrollContainer5;
     private javax.swing.JPanel inventoryAuxDisplay;
+    private javax.swing.JList<String> inventoryFuncList;
     private javax.swing.JPanel inventoryPanel;
     private javax.swing.JSplitPane inventorySplitPane;
     private javax.swing.JTabbedPane jTabbedPane1;
