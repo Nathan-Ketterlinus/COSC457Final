@@ -73,7 +73,7 @@ public class FinalUI extends javax.swing.JFrame {
         workerSplitPane = new javax.swing.JSplitPane();
         workerAuxDisplay = new javax.swing.JPanel();
         funcListScrollContainer5 = new javax.swing.JScrollPane();
-        WorkerfuncList = new javax.swing.JList<>();
+        WorkerFuncList = new javax.swing.JList<>();
         mainDisplay5 = new javax.swing.JPanel();
         tableScrollContainer5 = new javax.swing.JScrollPane();
         DisplayTable5 = new javax.swing.JTable();
@@ -440,12 +440,17 @@ public class FinalUI extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Inventory", inventoryPanel);
 
-        WorkerfuncList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Add", "Update", "Delete", "View Worker", "View All Workers"};
+        WorkerFuncList.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Add", "Update", "Delete", "View Some", "View All"};
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        funcListScrollContainer5.setViewportView(WorkerfuncList);
+        WorkerFuncList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                WorkerFuncListValueChanged(evt);
+            }
+        });
+        funcListScrollContainer5.setViewportView(WorkerFuncList);
 
         javax.swing.GroupLayout workerAuxDisplayLayout = new javax.swing.GroupLayout(workerAuxDisplay);
         workerAuxDisplay.setLayout(workerAuxDisplayLayout);
@@ -731,6 +736,42 @@ public class FinalUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_inventoryFuncListValueChanged
 
+    private void WorkerFuncListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_WorkerFuncListValueChanged
+        // Prevent double events (Swing fires twice during selection change)
+        if (evt.getValueIsAdjusting()) {
+            return;
+        }
+
+        String choice = WorkerFuncList.getSelectedValue();
+        if (choice == null) return;
+
+        switch (choice) {
+            case "Add":
+                // Create window that allows user to specify query
+                new WorkerAddWindow().setVisible(true);
+                break;
+
+            case "Update":
+                // Create window that allows user to specify query
+                new WorkerUpdateWindow().setVisible(true);
+                break;
+
+            case "Delete":
+                // Create window that allows user to specify query
+                new WorkerDeleteWindow().setVisible(true);
+                break;
+
+            case "View Some":
+                // Create window that allows user to specify query
+                new WorkerViewSomeWindow().setVisible(true);
+                break;
+
+            case "View All":
+                //TODO: update Worker table to show *
+                break;
+        }
+    }//GEN-LAST:event_WorkerFuncListValueChanged
+
     /**
      * @param args the command line arguments
      */
@@ -764,7 +805,7 @@ public class FinalUI extends javax.swing.JFrame {
     private javax.swing.JTable DisplayTable4;
     private javax.swing.JTable DisplayTable5;
     private javax.swing.JPanel FavorAuxDisplay;
-    private javax.swing.JList<String> WorkerfuncList;
+    private javax.swing.JList<String> WorkerFuncList;
     private javax.swing.JPanel clientAuxDisplay;
     private javax.swing.JList<String> clientFuncList;
     private javax.swing.JPanel clientPanel;
