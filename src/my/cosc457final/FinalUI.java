@@ -4,6 +4,35 @@
  */
 package my.cosc457final;
 
+import my.cosc457final.FavorWindows.FavorViewSomeWindow;
+import my.cosc457final.FavorWindows.FavorAddWindow;
+import my.cosc457final.FavorWindows.FavorDeleteWindow;
+import my.cosc457final.FavorWindows.FavorUpdateWindow;
+import my.cosc457final.EventWindows.EventViewSomeWindow;
+import my.cosc457final.EventWindows.EventDeleteWindow;
+import my.cosc457final.EventWindows.EventAddWindow;
+import my.cosc457final.EventWindows.EventUpdateWindow;
+import my.cosc457final.EventWindows.EventCalculateCostWindow;
+import my.cosc457final.ContractorWindows.ContractorUpdateWindow;
+import my.cosc457final.ContractorWindows.ContractorDeleteWindow;
+import my.cosc457final.ContractorWindows.ContractorCostForTimePeriodWindow;
+import my.cosc457final.ContractorWindows.ContractorViewSomeWindow;
+import my.cosc457final.ContractorWindows.ContractorAddWindow;
+import my.cosc457final.ClientWindows.ClientDeleteWindow;
+import my.cosc457final.ClientWindows.ClientViewSomeWindow;
+import my.cosc457final.ClientWindows.ClientAddWindow;
+import my.cosc457final.ClientWindows.ClientUpdateWindow;
+import my.cosc457final.EventWindows.EventSumSalesWindow;
+import my.cosc457final.FavorWindows.FavorCalculateCostWindow;
+import my.cosc457final.InventoryWindows.InventoryUpdateWindow;
+import my.cosc457final.InventoryWindows.InventoryDeleteWindow;
+import my.cosc457final.InventoryWindows.InventoryViewSomeWindow;
+import my.cosc457final.InventoryWindows.InventoryAddWindow;
+import my.cosc457final.WorkerWindows.WorkerViewSomeWindow;
+import my.cosc457final.WorkerWindows.WorkerUpdateWindow;
+import my.cosc457final.WorkerWindows.WorkerDeleteWindow;
+import my.cosc457final.WorkerWindows.WorkerAddWindow;
+
 /**
  *
  * @author nk
@@ -153,7 +182,7 @@ public class FinalUI extends javax.swing.JFrame {
         jTabbedPane1.addTab("Clients", clientPanel);
 
         contractorFuncList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Add", "Update", "Delete", "View Some", "View All"};
+            String[] strings = { "Add", "Update", "Delete", "View Some", "View All", "Cost for time period"};
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
@@ -225,7 +254,7 @@ public class FinalUI extends javax.swing.JFrame {
         jTabbedPane1.addTab("Contractors", contractorPanel);
 
         eventFuncList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Add", "Update", "Delete", "View Some", "View All", "View Past Events", "View Upcoming Events" };
+            String[] strings = { "Add", "Update", "Delete", "View Some", "View All", "View Past Events", "View Upcoming Events", "Sum sales in time period", "Calculate Cost" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
@@ -297,7 +326,7 @@ public class FinalUI extends javax.swing.JFrame {
         jTabbedPane1.addTab("Events", eventPanel);
 
         favorFuncList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Add", "Update", "Delete", "View Some", "View All", "View Upcoming Favors"};
+            String[] strings = { "Add", "Update", "Delete", "View Some", "View All", "View Upcoming Favors", "Calculate Cost"};
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
@@ -609,6 +638,10 @@ public class FinalUI extends javax.swing.JFrame {
             case "View All":
                 //TODO: update table to show *
                 break;
+                
+            case "Cost for time period":
+                new ContractorCostForTimePeriodWindow().setVisible(true);
+                break;
         }
     }//GEN-LAST:event_contractorFuncListValueChanged
 
@@ -624,22 +657,22 @@ public class FinalUI extends javax.swing.JFrame {
         switch (choice) {
             case "Add":
                 // Create window that allows user to specify query
-                new EventsAddWindow().setVisible(true);
+                new EventAddWindow().setVisible(true);
                 break;
 
             case "Update":
                 // Create window that allows user to specify query
-                new EventsUpdateWindow().setVisible(true);
+                new EventUpdateWindow().setVisible(true);
                 break;
 
             case "Delete":
                 // Create window that allows user to specify query
-                new EventsDeleteWindow().setVisible(true);
+                new EventDeleteWindow().setVisible(true);
                 break;
 
             case "View Some":
                 // Create window that allows user to specify query
-                new EventsViewSomeWindow().setVisible(true);
+                new EventViewSomeWindow().setVisible(true);
                 break;
 
             case "View All":
@@ -651,7 +684,15 @@ public class FinalUI extends javax.swing.JFrame {
                 break;
             
             case "View Upcoming Events":
-                //TODO: update Event table to show * where EDate > Today()
+                //TODO: update Event table to show * where EDate >= Today()
+                break;
+            
+            case "Sum sales in time period":
+                new EventSumSalesWindow().setVisible(true);
+                break;
+                
+            case "Calculate Cost":
+                new EventCalculateCostWindow().setVisible(true);
                 break;
         }
     }//GEN-LAST:event_eventFuncListValueChanged
@@ -691,13 +732,17 @@ public class FinalUI extends javax.swing.JFrame {
                 break;
             
             case "View Upcoming Favors":
-                //TODO: update Favor table to show * where FDate > Today()
+                //TODO: update Favor table to show * where FDate >= Today()
+                break;
+                
+             case "Calculate Cost":
+               new FavorCalculateCostWindow().setVisible(true);
                 break;
         }
     }//GEN-LAST:event_favorFuncListValueChanged
 
     private void inventoryFuncListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_inventoryFuncListValueChanged
-                // Prevent double events (Swing fires twice during selection change)
+        // Prevent double events (Swing fires twice during selection change)
         if (evt.getValueIsAdjusting()) {
             return;
         }
@@ -731,7 +776,7 @@ public class FinalUI extends javax.swing.JFrame {
                 break;
             
             case "Sort by Remaining":
-                //TODO: update Inventory table to show * where FDate > Today()
+                //TODO: update Inventory table to sort by Quantity (asc or desc?)
                 break;
         }
     }//GEN-LAST:event_inventoryFuncListValueChanged

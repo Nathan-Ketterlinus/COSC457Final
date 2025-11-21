@@ -237,7 +237,7 @@
                         <Component class="javax.swing.JList" name="contractorFuncList">
                           <Properties>
                             <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                              <Connection code="new javax.swing.AbstractListModel&lt;String&gt;() {&#xa;    String[] strings = { &quot;Add&quot;, &quot;Update&quot;, &quot;Delete&quot;, &quot;View Some&quot;, &quot;View All&quot;};&#xa;    public int getSize() { return strings.length; }&#xa;    public String getElementAt(int i) { return strings[i]; }&#xa;}" type="code"/>
+                              <Connection code="new javax.swing.AbstractListModel&lt;String&gt;() {&#xa;    String[] strings = { &quot;Add&quot;, &quot;Update&quot;, &quot;Delete&quot;, &quot;View Some&quot;, &quot;View All&quot;, &quot;Cost for time period&quot;};&#xa;    public int getSize() { return strings.length; }&#xa;    public String getElementAt(int i) { return strings[i]; }&#xa;}" type="code"/>
                             </Property>
                           </Properties>
                           <Events>
@@ -362,7 +362,7 @@
                         <Component class="javax.swing.JList" name="eventFuncList">
                           <Properties>
                             <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                              <Connection code="new javax.swing.AbstractListModel&lt;String&gt;() {&#xa;    String[] strings = { &quot;Add&quot;, &quot;Update&quot;, &quot;Delete&quot;, &quot;View Some&quot;, &quot;View All&quot;, &quot;View Past Events&quot;, &quot;View Upcoming Events&quot; };&#xa;    public int getSize() { return strings.length; }&#xa;    public String getElementAt(int i) { return strings[i]; }&#xa;}" type="code"/>
+                              <Connection code="new javax.swing.AbstractListModel&lt;String&gt;() {&#xa;    String[] strings = { &quot;Add&quot;, &quot;Update&quot;, &quot;Delete&quot;, &quot;View Some&quot;, &quot;View All&quot;, &quot;View Past Events&quot;, &quot;View Upcoming Events&quot;, &quot;Sum sales in time period&quot;, &quot;Calculate Cost&quot; };&#xa;    public int getSize() { return strings.length; }&#xa;    public String getElementAt(int i) { return strings[i]; }&#xa;}" type="code"/>
                             </Property>
                           </Properties>
                           <Events>
@@ -487,7 +487,7 @@
                         <Component class="javax.swing.JList" name="favorFuncList">
                           <Properties>
                             <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                              <Connection code="new javax.swing.AbstractListModel&lt;String&gt;() {&#xa;    String[] strings = { &quot;Add&quot;, &quot;Update&quot;, &quot;Delete&quot;, &quot;View Some&quot;, &quot;View All&quot;, &quot;View Upcoming Favors&quot;};&#xa;    public int getSize() { return strings.length; }&#xa;    public String getElementAt(int i) { return strings[i]; }&#xa;}" type="code"/>
+                              <Connection code="new javax.swing.AbstractListModel&lt;String&gt;() {&#xa;    String[] strings = { &quot;Add&quot;, &quot;Update&quot;, &quot;Delete&quot;, &quot;View Some&quot;, &quot;View All&quot;, &quot;View Upcoming Favors&quot;, &quot;Calculate Cost&quot;};&#xa;    public int getSize() { return strings.length; }&#xa;    public String getElementAt(int i) { return strings[i]; }&#xa;}" type="code"/>
                             </Property>
                           </Properties>
                           <Events>
