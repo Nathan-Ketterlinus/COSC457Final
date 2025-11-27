@@ -1,0 +1,223 @@
+-- This is the original ORIGINAL script for constructing the database. 
+-- if this is ever used you have to edit it. or have nick edit it.
+-- yeah just tell nick to edit it.
+
+-- MySQL Workbench Forward Engineering 
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema narella1db
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema narella1db
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `narella1db` DEFAULT CHARACTER SET latin1 ;
+USE `narella1db` ;
+
+-- -----------------------------------------------------
+-- Table `narella1db`.`Worker`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `narella1db`.`Worker` (
+  `WID` INT NOT NULL,
+  `WFName` VARCHAR(45) NULL,
+  `WMInit` CHAR(1) NULL,
+  `WLName` VARCHAR(45) NULL,
+  `Wsalary` INT NULL,
+  `WDoB` DATE NULL,
+  `WAddress` VARCHAR(80) NULL,
+  `SSN` INT NULL,
+  PRIMARY KEY (`WID`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `narella1db`.`Client`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `narella1db`.`Client` (
+  `CID` INT NOT NULL,
+  `FName` VARCHAR(45) NULL,
+  `LName` VARCHAR(45) NULL,
+  `CDoB` DATE NULL,
+  `PaymentInfo` INT NULL,
+  `WID` INT NULL,
+  PRIMARY KEY (`CID`),
+  INDEX `WID_idx` (`WID` ASC) VISIBLE,
+  CONSTRAINT `WID`
+    FOREIGN KEY (`WID`)
+    REFERENCES `narella1db`.`Worker` (`WID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `narella1db`.`Contractor`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `narella1db`.`Contractor` (
+  `ContID` INT NOT NULL,
+  `Job` VARCHAR(45) NULL,
+  `Cost` FLOAT NULL,
+  `PhoneNo` INT NULL,
+  PRIMARY KEY (`ContID`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `narella1db`.`Event`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `narella1db`.`Event` (
+  `EID` INT NOT NULL,
+  `EName` VARCHAR(45) NULL,
+  `EDate` DATE NULL,
+  `ETime` TIME NULL,
+  `ELocation` VARCHAR(45) NULL,
+  `ETheme` VARCHAR(45) NULL,
+  `EColors` VARCHAR(45) NULL,
+  `EIsPaid` TINYINT NULL,
+  `CID` INT NULL,
+  `EHours` INT NULL,
+  PRIMARY KEY (`EID`),
+  INDEX `ClientID_idx` (`CID` ASC) VISIBLE,
+  CONSTRAINT `ClientID`
+    FOREIGN KEY (`CID`)
+    REFERENCES `narella1db`.`Client` (`CID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `narella1db`.`Inventory`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `narella1db`.`Inventory` (
+  `IID` INT NOT NULL,
+  `IPrice` FLOAT NULL,
+  `IItemKind` VARCHAR(45) NULL,
+  `IQuantity` INT NULL,
+  `IReturnDate` DATE NULL,
+  PRIMARY KEY (`IID`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `narella1db`.`Favor`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `narella1db`.`Favor` (
+  `FID` INT NOT NULL,
+  `FKind` VARCHAR(45) NULL,
+  `FAmount` VARCHAR(45) NULL,
+  `FDeadline` DATE NULL,
+  `FClient` VARCHAR(45) NULL,
+  `FHours` INT NULL,
+  `FIsPaid` TINYINT NULL,
+  `FMaterialPrice` VARCHAR(45) NULL,
+  `FIsMade` TINYINT NULL,
+  `CID` INT NULL,
+  `EID` INT NULL,
+  PRIMARY KEY (`FID`),
+  INDEX `fCID_idx` (`CID` ASC) VISIBLE,
+  INDEX `fEID_idx` (`EID` ASC) VISIBLE,
+  CONSTRAINT `fCID`
+    FOREIGN KEY (`CID`)
+    REFERENCES `narella1db`.`Client` (`CID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fEID`
+    FOREIGN KEY (`EID`)
+    REFERENCES `narella1db`.`Event` (`EID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `narella1db`.`WorkerCreates`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `narella1db`.`WorkerCreates` (
+  `FID` INT NOT NULL,
+  `WID` INT NOT NULL,
+  PRIMARY KEY (`FID`, `WID`),
+  INDEX `CreatesWID_idx` (`WID` ASC) VISIBLE,
+  CONSTRAINT `CreatesFID`
+    FOREIGN KEY (`FID`)
+    REFERENCES `narella1db`.`Favor` (`FID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `CreatesWID`
+    FOREIGN KEY (`WID`)
+    REFERENCES `narella1db`.`Worker` (`WID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `narella1db`.`WorkerPlans`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `narella1db`.`WorkerPlans` (
+  `EID` INT NOT NULL,
+  `WID` INT NOT NULL,
+  PRIMARY KEY (`EID`, `WID`),
+  INDEX `PlansWID_idx` (`WID` ASC) VISIBLE,
+  CONSTRAINT `PlansEID`
+    FOREIGN KEY (`EID`)
+    REFERENCES `narella1db`.`Event` (`EID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `PlansWID`
+    FOREIGN KEY (`WID`)
+    REFERENCES `narella1db`.`Worker` (`WID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `narella1db`.`EventContractors`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `narella1db`.`EventContractors` (
+  `EID` INT NOT NULL,
+  `ContID` INT NOT NULL,
+  PRIMARY KEY (`EID`, `ContID`),
+  INDEX `ContractorsContID_idx` (`ContID` ASC) VISIBLE,
+  CONSTRAINT `ContractorsEID`
+    FOREIGN KEY (`EID`)
+    REFERENCES `narella1db`.`Event` (`EID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `ContractorsContID`
+    FOREIGN KEY (`ContID`)
+    REFERENCES `narella1db`.`Contractor` (`ContID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `narella1db`.`EventBorrows`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `narella1db`.`EventBorrows` (
+  `EID` INT NOT NULL,
+  `IID` INT NOT NULL,
+  PRIMARY KEY (`EID`, `IID`),
+  INDEX `BorrowIID_idx` (`IID` ASC) VISIBLE,
+  CONSTRAINT `BorrowEID`
+    FOREIGN KEY (`EID`)
+    REFERENCES `narella1db`.`Event` (`EID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `BorrowIID`
+    FOREIGN KEY (`IID`)
+    REFERENCES `narella1db`.`Inventory` (`IID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
