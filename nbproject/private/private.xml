@@ -4,10 +4,8 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/home/nk/NetBeansProjects/COSC457Final/src/my/cosc457final/FinalUI.java</file>
-            <file>file:/home/nk/NetBeansProjects/COSC457Final/src/my/cosc457final/EventsViewSomeWindow.java</file>
-            <file>file:/home/nk/NetBeansProjects/COSC457Final/src/my/cosc457final/EventsUpdateWindow.java</file>
-            <file>file:/home/nk/NetBeansProjects/COSC457Final/src/my/cosc457final/EventsDeleteWindow.java</file>
-            <file>file:/home/nk/NetBeansProjects/COSC457Final/src/my/cosc457final/EventsAddWindow.java</file>
+            <file>file:/home/nk/NetBeansProjects/COSC457Final/src/my/cosc457final/FavorWindows/FavorCalculateCostWindow.java</file>
+            <file>file:/home/nk/NetBeansProjects/COSC457Final/src/my/cosc457final/FavorWindows/FavorAddWindow.java</file>
         </group>
     </open-files>
 </project-private>

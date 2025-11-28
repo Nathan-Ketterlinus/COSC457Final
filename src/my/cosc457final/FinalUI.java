@@ -32,6 +32,14 @@ import my.cosc457final.WorkerWindows.WorkerViewSomeWindow;
 import my.cosc457final.WorkerWindows.WorkerUpdateWindow;
 import my.cosc457final.WorkerWindows.WorkerDeleteWindow;
 import my.cosc457final.WorkerWindows.WorkerAddWindow;
+import my.cosc457final.nmWindows.AddEventBorrowsWindow;
+import my.cosc457final.nmWindows.AddEventContractorsWindow;
+import my.cosc457final.nmWindows.AddWorkerCreatesWindow;
+import my.cosc457final.nmWindows.AddWorkerPlansWindow;
+import my.cosc457final.nmWindows.DeleteEventBorrowsWindow;
+import my.cosc457final.nmWindows.DeleteEventContractorsWindow;
+import my.cosc457final.nmWindows.DeleteWorkerCreatesWindow;
+import my.cosc457final.nmWindows.DeleteWorkerPlansWindow;
 
 /**
  *
@@ -106,6 +114,12 @@ public class FinalUI extends javax.swing.JFrame {
         mainDisplay5 = new javax.swing.JPanel();
         tableScrollContainer5 = new javax.swing.JScrollPane();
         DisplayTable5 = new javax.swing.JTable();
+        nmAssignmentPanel = new javax.swing.JPanel();
+        nmSplitPane = new javax.swing.JSplitPane();
+        nmAuxDisplay = new javax.swing.JPanel();
+        funcListScrollContainer6 = new javax.swing.JScrollPane();
+        nmFuncList = new javax.swing.JList<>();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -541,6 +555,65 @@ public class FinalUI extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Worker", workerPanel);
 
+        nmFuncList.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Add Worker to Event", "Delete Worker from Event", "Add Worker to Favor", "Delete Worker from Favor", "Add Contractor to Event", "Delete Contractor from Event", "Checkout Inventory for Event", "Return Inventory from Event"};
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        nmFuncList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                nmFuncListValueChanged(evt);
+            }
+        });
+        funcListScrollContainer6.setViewportView(nmFuncList);
+
+        javax.swing.GroupLayout nmAuxDisplayLayout = new javax.swing.GroupLayout(nmAuxDisplay);
+        nmAuxDisplay.setLayout(nmAuxDisplayLayout);
+        nmAuxDisplayLayout.setHorizontalGroup(
+            nmAuxDisplayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(nmAuxDisplayLayout.createSequentialGroup()
+                .addComponent(funcListScrollContainer6, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        nmAuxDisplayLayout.setVerticalGroup(
+            nmAuxDisplayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(funcListScrollContainer6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 343, Short.MAX_VALUE)
+        );
+
+        nmSplitPane.setLeftComponent(nmAuxDisplay);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 461, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 343, Short.MAX_VALUE)
+        );
+
+        nmSplitPane.setRightComponent(jPanel1);
+
+        javax.swing.GroupLayout nmAssignmentPanelLayout = new javax.swing.GroupLayout(nmAssignmentPanel);
+        nmAssignmentPanel.setLayout(nmAssignmentPanelLayout);
+        nmAssignmentPanelLayout.setHorizontalGroup(
+            nmAssignmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(nmAssignmentPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(nmSplitPane)
+                .addContainerGap())
+        );
+        nmAssignmentPanelLayout.setVerticalGroup(
+            nmAssignmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(nmAssignmentPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(nmSplitPane)
+                .addContainerGap())
+        );
+
+        jTabbedPane1.addTab("Assign", nmAssignmentPanel);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -817,6 +890,58 @@ public class FinalUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_WorkerFuncListValueChanged
 
+    private void nmFuncListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_nmFuncListValueChanged
+        // Prevent double events (Swing fires twice during selection change)
+        if (evt.getValueIsAdjusting()) {
+            return;
+        }
+
+        String choice = nmFuncList.getSelectedValue();
+        if (choice == null) return;
+
+        switch (choice) {
+            case "Add Worker to Event":
+                // Create window that allows user to specify query
+                new AddWorkerPlansWindow().setVisible(true);
+                break;
+
+            case "Delete Worker from Event":
+                // Create window that allows user to specify query
+                new DeleteWorkerPlansWindow().setVisible(true);
+                break;
+
+            case "Add Worker to Favor":
+                // Create window that allows user to specify query
+                new AddWorkerCreatesWindow().setVisible(true);
+                break;
+
+            case "Delete Worker from Favor":
+                // Create window that allows user to specify query
+                new DeleteWorkerCreatesWindow().setVisible(true);
+                break;
+
+            case "Add Contractor to Event":
+                // Create window that allows user to specify query
+                new AddEventContractorsWindow().setVisible(true);
+                break;
+            
+            case "Delete Contractor from Event":
+                // Create window that allows user to specify query
+                new DeleteEventContractorsWindow().setVisible(true);
+                break;
+                
+            case "Checkout Inventory for Event":
+                // Create window that allows user to specify query
+                new AddEventBorrowsWindow().setVisible(true);
+                break;
+                
+            case "Return Inventory from Event":
+                // Create window that allows user to specify query
+                new DeleteEventBorrowsWindow().setVisible(true);
+                break;
+        }
+    }//GEN-LAST:event_nmFuncListValueChanged
+
     /**
      * @param args the command line arguments
      */
@@ -872,10 +997,12 @@ public class FinalUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane funcListScrollContainer3;
     private javax.swing.JScrollPane funcListScrollContainer4;
     private javax.swing.JScrollPane funcListScrollContainer5;
+    private javax.swing.JScrollPane funcListScrollContainer6;
     private javax.swing.JPanel inventoryAuxDisplay;
     private javax.swing.JList<String> inventoryFuncList;
     private javax.swing.JPanel inventoryPanel;
     private javax.swing.JSplitPane inventorySplitPane;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JPanel mainDisplay;
     private javax.swing.JPanel mainDisplay1;
@@ -883,6 +1010,10 @@ public class FinalUI extends javax.swing.JFrame {
     private javax.swing.JPanel mainDisplay3;
     private javax.swing.JPanel mainDisplay4;
     private javax.swing.JPanel mainDisplay5;
+    private javax.swing.JPanel nmAssignmentPanel;
+    private javax.swing.JPanel nmAuxDisplay;
+    private javax.swing.JList<String> nmFuncList;
+    private javax.swing.JSplitPane nmSplitPane;
     private javax.swing.JScrollPane tableScrollContainer;
     private javax.swing.JScrollPane tableScrollContainer1;
     private javax.swing.JScrollPane tableScrollContainer2;
