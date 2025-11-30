@@ -6,6 +6,14 @@
             <file>file:/home/nk/NetBeansProjects/COSC457Final/src/my/cosc457final/FinalUI.java</file>
             <file>file:/home/nk/NetBeansProjects/COSC457Final/src/my/cosc457final/FavorWindows/FavorCalculateCostWindow.java</file>
             <file>file:/home/nk/NetBeansProjects/COSC457Final/src/my/cosc457final/FavorWindows/FavorAddWindow.java</file>
+            <file>file:/home/nk/NetBeansProjects/COSC457Final/src/my/cosc457final/nmWindows/AddWorkerCreatesWindow.java</file>
+            <file>file:/home/nk/NetBeansProjects/COSC457Final/src/my/cosc457final/nmWindows/DeleteWorkerCreatesWindow.java</file>
+            <file>file:/home/nk/NetBeansProjects/COSC457Final/src/my/cosc457final/nmWindows/DeleteWorkerPlansWindow.java</file>
+            <file>file:/home/nk/NetBeansProjects/COSC457Final/src/my/cosc457final/nmWindows/AddWorkerPlansWindow.java</file>
+            <file>file:/home/nk/NetBeansProjects/COSC457Final/src/my/cosc457final/nmWindows/DeleteEventContractorsWindow.java</file>
+            <file>file:/home/nk/NetBeansProjects/COSC457Final/src/my/cosc457final/nmWindows/AddEventContractorsWindow.java</file>
+            <file>file:/home/nk/NetBeansProjects/COSC457Final/src/my/cosc457final/nmWindows/DeleteEventBorrowsWindow.java</file>
+            <file>file:/home/nk/NetBeansProjects/COSC457Final/src/my/cosc457final/nmWindows/AddEventBorrowsWindow.java</file>
         </group>
     </open-files>
 </project-private>

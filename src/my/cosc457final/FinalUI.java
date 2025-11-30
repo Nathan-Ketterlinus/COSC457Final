@@ -73,7 +73,7 @@ public class FinalUI extends javax.swing.JFrame {
         clientFuncList = new javax.swing.JList<>();
         mainDisplay = new javax.swing.JPanel();
         tableScrollContainer = new javax.swing.JScrollPane();
-        DisplayTable = new javax.swing.JTable();
+        ClientDisplayTable = new javax.swing.JTable();
         contractorPanel = new javax.swing.JPanel();
         contractorSplitPane = new javax.swing.JSplitPane();
         contractorAuxDisplay = new javax.swing.JPanel();
@@ -81,7 +81,7 @@ public class FinalUI extends javax.swing.JFrame {
         contractorFuncList = new javax.swing.JList<>();
         mainDisplay1 = new javax.swing.JPanel();
         tableScrollContainer1 = new javax.swing.JScrollPane();
-        DisplayTable1 = new javax.swing.JTable();
+        ContractorsDisplayTable = new javax.swing.JTable();
         eventPanel = new javax.swing.JPanel();
         eventSplitPane = new javax.swing.JSplitPane();
         eventAuxDisplay = new javax.swing.JPanel();
@@ -89,7 +89,7 @@ public class FinalUI extends javax.swing.JFrame {
         eventFuncList = new javax.swing.JList<>();
         mainDisplay2 = new javax.swing.JPanel();
         tableScrollContainer2 = new javax.swing.JScrollPane();
-        DisplayTable2 = new javax.swing.JTable();
+        EventDisplayTable = new javax.swing.JTable();
         favorPanel = new javax.swing.JPanel();
         favorSplitPane = new javax.swing.JSplitPane();
         FavorAuxDisplay = new javax.swing.JPanel();
@@ -97,7 +97,7 @@ public class FinalUI extends javax.swing.JFrame {
         favorFuncList = new javax.swing.JList<>();
         mainDisplay3 = new javax.swing.JPanel();
         tableScrollContainer3 = new javax.swing.JScrollPane();
-        DisplayTable3 = new javax.swing.JTable();
+        FavorDisplayTable = new javax.swing.JTable();
         inventoryPanel = new javax.swing.JPanel();
         inventorySplitPane = new javax.swing.JSplitPane();
         inventoryAuxDisplay = new javax.swing.JPanel();
@@ -105,7 +105,7 @@ public class FinalUI extends javax.swing.JFrame {
         inventoryFuncList = new javax.swing.JList<>();
         mainDisplay4 = new javax.swing.JPanel();
         tableScrollContainer4 = new javax.swing.JScrollPane();
-        DisplayTable4 = new javax.swing.JTable();
+        InventoryDisplayTable = new javax.swing.JTable();
         workerPanel = new javax.swing.JPanel();
         workerSplitPane = new javax.swing.JSplitPane();
         workerAuxDisplay = new javax.swing.JPanel();
@@ -113,7 +113,7 @@ public class FinalUI extends javax.swing.JFrame {
         WorkerFuncList = new javax.swing.JList<>();
         mainDisplay5 = new javax.swing.JPanel();
         tableScrollContainer5 = new javax.swing.JScrollPane();
-        DisplayTable5 = new javax.swing.JTable();
+        WorkerDisplayTable = new javax.swing.JTable();
         nmAssignmentPanel = new javax.swing.JPanel();
         nmSplitPane = new javax.swing.JSplitPane();
         nmAuxDisplay = new javax.swing.JPanel();
@@ -150,7 +150,7 @@ public class FinalUI extends javax.swing.JFrame {
 
         clientSplitPane.setLeftComponent(clientAuxDisplay);
 
-        DisplayTable.setModel(new javax.swing.table.DefaultTableModel(
+        ClientDisplayTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -158,10 +158,10 @@ public class FinalUI extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Client ID", "First Name", "Last Name", "Date of Birth", "Payment Info", "Assigned Worker ID"
             }
         ));
-        tableScrollContainer.setViewportView(DisplayTable);
+        tableScrollContainer.setViewportView(ClientDisplayTable);
 
         javax.swing.GroupLayout mainDisplayLayout = new javax.swing.GroupLayout(mainDisplay);
         mainDisplay.setLayout(mainDisplayLayout);
@@ -222,7 +222,7 @@ public class FinalUI extends javax.swing.JFrame {
 
         contractorSplitPane.setLeftComponent(contractorAuxDisplay);
 
-        DisplayTable1.setModel(new javax.swing.table.DefaultTableModel(
+        ContractorsDisplayTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -230,10 +230,10 @@ public class FinalUI extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Contractor ID", "Job", "Cost", "Phone #"
             }
         ));
-        tableScrollContainer1.setViewportView(DisplayTable1);
+        tableScrollContainer1.setViewportView(ContractorsDisplayTable);
 
         javax.swing.GroupLayout mainDisplay1Layout = new javax.swing.GroupLayout(mainDisplay1);
         mainDisplay1.setLayout(mainDisplay1Layout);
@@ -294,7 +294,7 @@ public class FinalUI extends javax.swing.JFrame {
 
         eventSplitPane.setLeftComponent(eventAuxDisplay);
 
-        DisplayTable2.setModel(new javax.swing.table.DefaultTableModel(
+        EventDisplayTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -302,10 +302,10 @@ public class FinalUI extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Event ID", "Name", "Date", "Time", "Location", "Theme", "Colors", "Is Paid?", "Ordering Client ID"
             }
         ));
-        tableScrollContainer2.setViewportView(DisplayTable2);
+        tableScrollContainer2.setViewportView(EventDisplayTable);
 
         javax.swing.GroupLayout mainDisplay2Layout = new javax.swing.GroupLayout(mainDisplay2);
         mainDisplay2.setLayout(mainDisplay2Layout);
@@ -366,7 +366,7 @@ public class FinalUI extends javax.swing.JFrame {
 
         favorSplitPane.setLeftComponent(FavorAuxDisplay);
 
-        DisplayTable3.setModel(new javax.swing.table.DefaultTableModel(
+        FavorDisplayTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -374,10 +374,10 @@ public class FinalUI extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Favor ID", "Kind", "Amount", "Deadline", "Hours", "Is Paid?", "Material Price", "Is Made?", "Ordering Client ID", "Belongs to Event ID"
             }
         ));
-        tableScrollContainer3.setViewportView(DisplayTable3);
+        tableScrollContainer3.setViewportView(FavorDisplayTable);
 
         javax.swing.GroupLayout mainDisplay3Layout = new javax.swing.GroupLayout(mainDisplay3);
         mainDisplay3.setLayout(mainDisplay3Layout);
@@ -438,7 +438,7 @@ public class FinalUI extends javax.swing.JFrame {
 
         inventorySplitPane.setLeftComponent(inventoryAuxDisplay);
 
-        DisplayTable4.setModel(new javax.swing.table.DefaultTableModel(
+        InventoryDisplayTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -446,10 +446,10 @@ public class FinalUI extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Item ID", "Price", "Kind", "Quantity", "Return Date"
             }
         ));
-        tableScrollContainer4.setViewportView(DisplayTable4);
+        tableScrollContainer4.setViewportView(InventoryDisplayTable);
 
         javax.swing.GroupLayout mainDisplay4Layout = new javax.swing.GroupLayout(mainDisplay4);
         mainDisplay4.setLayout(mainDisplay4Layout);
@@ -510,7 +510,7 @@ public class FinalUI extends javax.swing.JFrame {
 
         workerSplitPane.setLeftComponent(workerAuxDisplay);
 
-        DisplayTable5.setModel(new javax.swing.table.DefaultTableModel(
+        WorkerDisplayTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -518,10 +518,10 @@ public class FinalUI extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Worker ID", "First Name", "Middle Init", "Last Name", "Salary", "Date of Birth", "Address", "SSN"
             }
         ));
-        tableScrollContainer5.setViewportView(DisplayTable5);
+        tableScrollContainer5.setViewportView(WorkerDisplayTable);
 
         javax.swing.GroupLayout mainDisplay5Layout = new javax.swing.GroupLayout(mainDisplay5);
         mainDisplay5.setLayout(mainDisplay5Layout);
@@ -968,13 +968,13 @@ public class FinalUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable DisplayTable;
-    private javax.swing.JTable DisplayTable1;
-    private javax.swing.JTable DisplayTable2;
-    private javax.swing.JTable DisplayTable3;
-    private javax.swing.JTable DisplayTable4;
-    private javax.swing.JTable DisplayTable5;
+    private javax.swing.JTable ClientDisplayTable;
+    private javax.swing.JTable ContractorsDisplayTable;
+    private javax.swing.JTable EventDisplayTable;
     private javax.swing.JPanel FavorAuxDisplay;
+    private javax.swing.JTable FavorDisplayTable;
+    private javax.swing.JTable InventoryDisplayTable;
+    private javax.swing.JTable WorkerDisplayTable;
     private javax.swing.JList<String> WorkerFuncList;
     private javax.swing.JPanel clientAuxDisplay;
     private javax.swing.JList<String> clientFuncList;
