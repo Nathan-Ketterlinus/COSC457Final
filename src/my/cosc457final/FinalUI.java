@@ -236,7 +236,7 @@ public class FinalUI extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Contractor ID", "Job", "Cost", "Phone #"
+                "Contractor ID","Cost", "Phone #", "Job"
             }
         ));
         tableScrollContainer1.setViewportView(ContractorsDisplayTable);
@@ -308,7 +308,7 @@ public class FinalUI extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Event ID", "Name", "Date", "Time", "Location", "Theme", "Colors", "Is Paid?", "Ordering Client ID"
+                "Event ID", "Name", "Date", "Time", "Location", "Theme", "Colors", "Ordering Client ID", "Is Paid?"
             }
         ));
         tableScrollContainer2.setViewportView(EventDisplayTable);
