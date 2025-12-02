@@ -109,19 +109,10 @@ public class WorkerDeleteWindow extends javax.swing.JFrame {
                 
         try{
 		Connection con = DriverManager.getConnection(SERVER, ID, PW);
-                PreparedStatement ps = con.prepareStatement("DELETE FROM Worker WHERE WID = ?");//////////QUERY FROM SERENA//////////
-                PreparedStatement ps4 = con.prepareStatement("UPDATE Client SET WID = NULL WHERE WID = ?");
-                PreparedStatement ps2 = con.prepareStatement("DELETE FROM WorkerPlans WHERE WID = ?");//////////QUERY FROM SERENA to delete from WorkerPlans//////////
-                PreparedStatement ps3 = con.prepareStatement("DELETE FROM WorkerCreates WHERE WID = ?");//////////QUERY FROM SERENA to delete from WorkerCreates//////////
+                PreparedStatement ps = con.prepareStatement("DELETE FROM Worker WHERE WID = ?");//////////QUERY FROM SERENA////////////////////QUERY FROM SERENA to delete from WorkerCreates//////////
                 
                 ps.setInt(1, WID);
-                ps4.setInt(1, WID);
-                ps2.setInt(1, WID);
-                ps3.setInt(1, WID);
                 
-                ps4.executeUpdate();
-                ps3.executeUpdate();
-                ps2.executeUpdate();
                 ps.executeUpdate();
             
             } catch (SQLException e){

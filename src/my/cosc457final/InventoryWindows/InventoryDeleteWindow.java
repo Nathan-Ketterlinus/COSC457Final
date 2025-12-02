@@ -110,12 +110,9 @@ public class InventoryDeleteWindow extends javax.swing.JFrame {
         try{
 		Connection con = DriverManager.getConnection(SERVER, ID, PW);
                 PreparedStatement ps = con.prepareStatement("DELETE FROM Inventory WHERE IID = ?");//////////QUERY FROM SERENA//////////
-                PreparedStatement ps2 = con.prepareStatement("DELETE FROM EventBorrows WHERE IID = ?");
                 
                 ps.setInt(1, IID);
-                ps2.setInt(1, IID);
                 
-                ps2.executeUpdate();
                 ps.executeUpdate();
             
             } catch (SQLException e){

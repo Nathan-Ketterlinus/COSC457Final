@@ -110,18 +110,9 @@ public class EventDeleteWindow extends javax.swing.JFrame {
         try{
 		Connection con = DriverManager.getConnection(SERVER, ID, PW);
                 PreparedStatement ps = con.prepareStatement("DELETE FROM Event WHERE EID = ?");//////////QUERY FROM SERENA//////////
-                PreparedStatement ps2 = con.prepareStatement("DELETE FROM EventBorrows WHERE EID = ?");//////////QUERY FROM SERENA to delete from EventBorrows//////////
-                PreparedStatement ps3 = con.prepareStatement("DELETE FROM EventContractors WHERE EID = ?");//////////QUERY FROM SERENA to delete from EventContractors//////////
-                PreparedStatement ps4 = con.prepareStatement("DELETE FROM WorkerPlans WHERE EID = ?");
                 
                 ps.setInt(1, EID);
-                ps2.setInt(1, EID);
-                ps3.setInt(1, EID);
-                ps4.setInt(1, EID);
                 
-                ps4.executeUpdate();
-                ps3.executeUpdate();
-                ps2.executeUpdate();
                 ps.executeUpdate();
                 
             

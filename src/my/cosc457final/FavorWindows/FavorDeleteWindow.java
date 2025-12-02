@@ -110,12 +110,9 @@ public class FavorDeleteWindow extends javax.swing.JFrame {
         try{
 		Connection con = DriverManager.getConnection(SERVER, ID, PW);
                 PreparedStatement ps = con.prepareStatement("DELETE FROM Favor WHERE FID = ?");//////////QUERY FROM SERENA//////////
-                PreparedStatement ps2 = con.prepareStatement("DELETE FROM WorkerCreates WHERE FID = ?");
                 
                 ps.setInt(1, FID);
-                ps2.setInt(1, FID);
                 
-                ps2.executeUpdate();
                 ps.executeUpdate();
             
             } catch (SQLException e){

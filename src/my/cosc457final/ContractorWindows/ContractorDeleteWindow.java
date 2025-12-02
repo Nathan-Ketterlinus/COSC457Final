@@ -110,12 +110,9 @@ public class ContractorDeleteWindow extends javax.swing.JFrame {
         try{
 		Connection con = DriverManager.getConnection(SERVER, ID, PW);
                 PreparedStatement ps = con.prepareStatement("DELETE FROM Contractor WHERE ContID = ?");//////////QUERY FROM SERENA//////////
-                PreparedStatement ps2 = con.prepareStatement("DELETE FROM EventContractors WHERE ContID = ?");
                 
                 ps.setInt(1, contID);
-                ps2.setInt(1, contID);
                 
-                ps2.executeUpdate();
                 ps.executeUpdate();
             
             } catch (SQLException e){
