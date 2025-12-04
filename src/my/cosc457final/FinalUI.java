@@ -1226,7 +1226,7 @@ public class FinalUI extends javax.swing.JFrame {
 
                 try{
                         Connection con = DriverManager.getConnection(SERVER, ID, PW);
-                        PreparedStatement ps = con.prepareStatement("SELECT *, (IQuantity - IQuantityInUse) AS Remaining FROM Inventory ORDER BY Remaining DESC;");
+                        PreparedStatement ps = con.prepareStatement("SELECT *, IQuantity FROM Inventory ORDER BY IQuantity DESC;");
                         ResultSet rs = ps.executeQuery();
                         
                         DefaultTableModel model = (DefaultTableModel) InventoryDisplayTable.getModel();

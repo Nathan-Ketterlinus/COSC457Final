@@ -176,6 +176,7 @@ public class ClientViewSomeWindow extends javax.swing.JFrame {
         Date dob = null;
         String payment = "";
         int workerID = 0;
+        StringBuilder allResults = new StringBuilder();
         
         Boolean hasCID = false;
         Boolean hasfirst = false;
@@ -289,7 +290,21 @@ public class ClientViewSomeWindow extends javax.swing.JFrame {
                     Date pdob = rs.getDate("CDoB");
                     String ppayment = rs.getString("PaymentInfo");
                     int pworkerID = rs.getInt("WID");
-                    System.out.println("CID: "+pCID+", FName: "+pfirst+", LName: "+plast+", DoB: "+pdob+", PaymentInfo: "+ppayment+", WID: "+pworkerID);
+                    
+                    allResults.append("CID: ").append(pCID)
+                    .append(", FName: ").append(pfirst)
+                    .append(", LName: ").append(plast)
+                    .append(", DoB: ").append(pdob)
+                    .append(", PaymentInfo: ").append(ppayment)
+                    .append(", WID: ").append(pworkerID)
+                    .append("\n");
+                
+                }
+                
+                if (allResults.length() > 0) {
+                    javax.swing.JOptionPane.showMessageDialog(null, allResults.toString(), "Client Info", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    javax.swing.JOptionPane.showMessageDialog(null, "No matching clients found.", "Client Info", javax.swing.JOptionPane.INFORMATION_MESSAGE);
                 }
                 
             } catch (SQLException e){

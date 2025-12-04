@@ -184,6 +184,7 @@ public class WorkerViewSomeWindow extends javax.swing.JFrame {
         Date dob = null;
         String address = "";
         int ssn = 0;
+        StringBuilder allResults = new StringBuilder();
         
         Boolean hasWID = false;
         Boolean hasfName = false;
@@ -327,8 +328,24 @@ public class WorkerViewSomeWindow extends javax.swing.JFrame {
                     Date pdob = rs.getDate("WDoB");
                     String paddress = rs.getString("WAddress");
                     int pssn = rs.getInt("SSN");
-                    System.out.println("WID: "+pWID+", WFName: "+pfName+", WMInit: "+pmInit+", WLName: "+plName+", Wsalary: "+psalary+", WDoB: "+pdob+", WAddress: "+paddress+", SSN: "+pssn);
+
+                    allResults.append("WID: ").append(pWID)
+                      .append(", WFName: ").append(pfName)
+                      .append(", WMInit: ").append(pmInit)
+                      .append(", WLName: ").append(plName)
+                      .append(", Wsalary: ").append(psalary)
+                      .append(", WDoB: ").append(pdob)
+                      .append(", WAddress: ").append(paddress)
+                      .append(", SSN: ").append(pssn)
+                      .append("\n");
+                
                 }
+
+                if (allResults.length() > 0) {
+                    javax.swing.JOptionPane.showMessageDialog(null, allResults.toString(), "Worker Info", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    javax.swing.JOptionPane.showMessageDialog(null, "No matching workers found.", "Worker Info", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                }   
                 
             } catch (SQLException e){
 			System.err.println(e);

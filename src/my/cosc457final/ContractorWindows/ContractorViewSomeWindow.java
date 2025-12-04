@@ -149,6 +149,7 @@ public class ContractorViewSomeWindow extends javax.swing.JFrame {
         int cost = 0;
         String phone = "";
         String job = "";
+        StringBuilder allResults = new StringBuilder();
         
         Boolean hascontID = false;
         Boolean hascost = false;
@@ -232,7 +233,19 @@ public class ContractorViewSomeWindow extends javax.swing.JFrame {
                     int pcost = rs.getInt("Cost");
                     String pphone = rs.getString("PhoneNo");
                     String pjob = rs.getString("Job");
-                    System.out.println("ContID: "+pcontID+", Cost: "+pcost+", PhoneNo: "+pphone+", Job: "+pjob);
+                
+                    allResults.append("ContID: ").append(pcontID)
+                      .append(", Cost: ").append(pcost)
+                      .append(", PhoneNo: ").append(pphone)
+                      .append(", Job: ").append(pjob)
+                      .append("\n");
+                    
+                }
+                
+                if (allResults.length() > 0) {
+                    javax.swing.JOptionPane.showMessageDialog(null, allResults.toString(), "Contractor Info", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    javax.swing.JOptionPane.showMessageDialog(null, "No matching contractors found.", "Contractor Info", javax.swing.JOptionPane.INFORMATION_MESSAGE);
                 }
                 
             } catch (SQLException e){

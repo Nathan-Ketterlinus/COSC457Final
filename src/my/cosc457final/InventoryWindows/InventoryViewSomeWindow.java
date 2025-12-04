@@ -162,6 +162,7 @@ public class InventoryViewSomeWindow extends javax.swing.JFrame {
         String itemKind = "";
         int quantity = 0;
         Date returnDate = null;
+        StringBuilder allResults = new StringBuilder();
         
         Boolean hasIID = false;
         Boolean hasprice = false;
@@ -260,7 +261,20 @@ public class InventoryViewSomeWindow extends javax.swing.JFrame {
                     String pitemKind = rs.getString("IItemKind");
                     int pquantity = rs.getInt("IQuantity");
                     Date preturnDate = rs.getDate("IReturnDate");
-                    System.out.println("IID: "+pIID+", IPrice: "+pprice+", IItemKind: "+pitemKind+", IQuantity: "+pquantity+", IReturnDate: "+preturnDate);
+                
+                    allResults.append("IID: ").append(pIID)
+                          .append(", IPrice: ").append(pprice)
+                          .append(", IItemKind: ").append(pitemKind)
+                          .append(", IQuantity: ").append(pquantity)
+                          .append(", IReturnDate: ").append(preturnDate)
+                          .append("\n");
+
+                }
+                
+                if (allResults.length() > 0) {
+                    javax.swing.JOptionPane.showMessageDialog(null, allResults.toString(), "Inventory Info", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    javax.swing.JOptionPane.showMessageDialog(null, "No matching inventory items found.", "Inventory Info", javax.swing.JOptionPane.INFORMATION_MESSAGE);
                 }
                 
             } catch (SQLException e){

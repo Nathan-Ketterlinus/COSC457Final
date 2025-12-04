@@ -208,6 +208,7 @@ public class FavorViewSomeWindow extends javax.swing.JFrame {
         boolean isMade = false;
         int CID = 0;
         int EID = 0;
+        StringBuilder allResults = new StringBuilder();
         
         Boolean hasFID = false;
         Boolean haskind = false;
@@ -381,7 +382,25 @@ public class FavorViewSomeWindow extends javax.swing.JFrame {
                     boolean pismade = rs.getBoolean("FIsMade");
                     int pCID = rs.getInt("CID");
                     int pEID = rs.getInt("EID");
-                    System.out.println("FID: "+pFID+", FKind: "+pkind+", FAmount: "+pamount+", FDeadline: "+pdeadline+", FHours: "+phours+", FIsPaid: "+pispaid+", FMaterialPrice: "+pmaterialprice+", FIsMade: "+pismade+", CID: "+pCID+", EID: "+pEID);
+                
+                    allResults.append("FID: ").append(pFID)
+                          .append(", FKind: ").append(pkind)
+                          .append(", FAmount: ").append(pamount)
+                          .append(", FDeadline: ").append(pdeadline)
+                          .append(", FHours: ").append(phours)
+                          .append(", FIsPaid: ").append(pispaid)
+                          .append(", FMaterialPrice: ").append(pmaterialprice)
+                          .append(", FIsMade: ").append(pismade)
+                          .append(", CID: ").append(pCID)
+                          .append(", EID: ").append(pEID)
+                          .append("\n");
+                
+                }
+                
+                if (allResults.length() > 0) {
+                    javax.swing.JOptionPane.showMessageDialog(null, allResults.toString(), "Favor Info", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    javax.swing.JOptionPane.showMessageDialog(null, "No matching favors found.", "Favor Info", javax.swing.JOptionPane.INFORMATION_MESSAGE);
                 }
                 
             } catch (SQLException e){

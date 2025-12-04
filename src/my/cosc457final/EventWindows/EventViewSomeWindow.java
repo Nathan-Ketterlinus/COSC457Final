@@ -209,6 +209,7 @@ public class EventViewSomeWindow extends javax.swing.JFrame {
         int hours = 0;
         boolean isPaid = false;
         int CID = 0;
+        StringBuilder allResults = new StringBuilder();
         
         Boolean hasEID = false;
         Boolean hasname = false;
@@ -332,10 +333,26 @@ public class EventViewSomeWindow extends javax.swing.JFrame {
                     int phours = rs.getInt("EHours");
                     Boolean pisPaid = rs.getBoolean("EIsPaid");
                     String pCID = rs.getString("CID");
-                    System.out.println("EID: "+pEID+", EName: "+pname+", EDate: "+pdate+", ETime: "+ptime+", ELocation: "+plocation+", ETheme: "+ptheme+", EColors: "+pcolors+", EHours: "+phours+", EIsPaid: "+pisPaid+", CID: "+pCID);
+                
+                    allResults.append("EID: ").append(pEID)
+                      .append(", EName: ").append(pname)
+                      .append(", EDate: ").append(pdate)
+                      .append(", ETime: ").append(ptime)
+                      .append(", ELocation: ").append(plocation)
+                      .append(", ETheme: ").append(ptheme)
+                      .append(", EColors: ").append(pcolors)
+                      .append(", EHours: ").append(phours)
+                      .append(", EIsPaid: ").append(pisPaid)
+                      .append(", CID: ").append(pCID)
+                      .append("\n");
+                    
                 }
                 
-                
+                if (allResults.length() > 0) {
+                    javax.swing.JOptionPane.showMessageDialog(null, allResults.toString(), "Event Info", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    javax.swing.JOptionPane.showMessageDialog(null, "No matching events found.", "Event Info", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                }
                 
             } catch (SQLException e){
 			System.err.println(e);
